@@ -531,6 +531,16 @@ if(NOT builtin_gl2ps)
   endif()
 endif()
 
+#---Check for chaos ------------------------------------------------------------------
+
+message(STATUS "Looking for chaos")
+find_Package(Chaos)
+if(NOT CHAOS_FOUND)
+  message(STATUS "chaos not found. Switching on builtin_chaos option")
+  set(builtin_chaos ON CACHE BOOL "" FORCE)
+endif()
+
+
 #---Check for Graphviz installation-------------------------------------------------------
 if(gviz)
   message(STATUS "Looking for Graphviz")
